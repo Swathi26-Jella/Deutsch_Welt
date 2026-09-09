@@ -1,8 +1,8 @@
 // DeutschWelt – frontend data + optional Supabase integration.
 // Add your Supabase URL and anon key below to load database content.
 
-const SUPABASE_URL = "";
-const SUPABASE_ANON_KEY = "";
+const SUPABASE_URL = "https://supabase.com/dashboard/project/llxcyabptsbdtsdhkzkc";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxseGN5YWJwdHNiZHRzZGhremtjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg5NjE3NTAsImV4cCI6MjEwNDUzNzc1MH0.cYvadDwigcXKlmbtN7s7jAVJCyXOO82uU3CC3Dz52vg";
 
 const fallbackLevels = [
   {
