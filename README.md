@@ -1,42 +1,119 @@
-DeutschWelt – Starter Website
+DeutschWelt – Supabase Content-Driven
 
-DeutschWelt is a responsive German-learning website starter for A1–B2.
+Architecture
 
-Files
+GitHub stores only the website code.
+Supabase stores the learning content.
 
-index.html – website structure
+Normal future content additions do NOT require editing or adding code in GitHub.
 
-style.css – responsive design
+Included
 
-script.js – lessons, filters, mini quizzes, vocabulary, optional Supabase loading
+Startseite
 
-supabase.sql – database schema, Row Level Security policies and starter content
+Lernwelten
 
-Run locally
+A1
 
-Open index.html in a browser. The site works with built-in fallback data even before Supabase is connected.
+A2
 
-Connect Supabase
+B1
 
-Create a Supabase project.
+Wortschatz
 
-Open SQL Editor.
+Grammatik
 
-Run all of supabase.sql.
+No Über uns
 
-In script.js, set:
+No quizzes/exercises/scores
 
-const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
-const SUPABASE_ANON_KEY = "YOUR-ANON-KEY";
+Setup
 
-Use the anon/publishable client key, not a service-role key.
+Open Supabase → SQL Editor.
 
-The frontend only reads published/public learning content. Keep private/admin functionality for a later authenticated admin area.
+Paste and run supabase.sql.
 
-Publish with GitHub Pages
+Open script.js.
 
-Upload index.html, style.css and script.js to a GitHub repository. Enable GitHub Pages for the repository.
+Replace:
+SUPABASE_URL
+SUPABASE_ANON_KEY
 
-Publish with Vercel
+Use the public anon/publishable key only. Never put a service_role key in GitHub.
 
-Import the repository into Vercel. No build step is required for this plain HTML/CSS/JS starter.
+Upload these files to GitHub root and enable GitHub Pages.
+
+Add future content in Supabase
+
+New topic
+
+Supabase → Table Editor → topics → Insert row.
+
+Use:
+
+level: A1 / A2 / B1
+
+category
+
+title
+
+summary
+
+explanation
+
+key_points JSON array
+
+sentence_patterns JSON array
+
+examples JSON array
+
+merke
+
+icon
+
+image_url
+
+sort_order
+
+published
+
+Save. The website reads it automatically.
+
+New grammar
+
+Insert a row into grammar_topics with the same style of content fields.
+
+New vocabulary
+
+Insert a row into vocabulary:
+
+level
+
+category
+
+word
+
+article
+
+plural
+
+meaning
+
+example
+
+note
+
+image_url
+
+sort_order
+
+published
+
+Images
+
+The topic and grammar tables include image_url.
+Later, you can store images in Supabase Storage and paste the public URL into that row.
+
+Adding B2 later
+
+The current database is intentionally A1/A2/B1 only. When you are ready for B2, the schema/template can be extended. Normal B2 content can then be managed in Supabase.
