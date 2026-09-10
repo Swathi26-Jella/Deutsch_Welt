@@ -18,35 +18,39 @@
 
     --green: #cfe9dc;
 
-    --lavender: #e6ddf7;
+    --purple: #e6ddf7;
 
     --border: #e8e6df;
 
     --shadow:
-        0 18px 45px rgba(47, 59, 84, 0.10);
+        0 18px 45px
+        rgba(47, 59, 84, 0.10);
 
     --radius: 24px;
 
 }
 
 
-/* ==============================================
-   RESET
-   ============================================== */
-
 * {
-    box-sizing: border-box;
+
+    box-sizing:
+        border-box;
+
 }
 
 
 html {
-    scroll-behavior: smooth;
+
+    scroll-behavior:
+        smooth;
+
 }
 
 
 body {
 
-    margin: 0;
+    margin:
+        0;
 
     font-family:
         Inter,
@@ -57,34 +61,36 @@ body {
         "Segoe UI",
         sans-serif;
 
-    color: var(--ink);
+    color:
+        var(--ink);
 
-    background: var(--paper);
+    background:
+        var(--paper);
 
-    line-height: 1.65;
+    line-height:
+        1.65;
 
 }
 
 
 a {
 
-    color: inherit;
+    text-decoration:
+        none;
 
-    text-decoration: none;
+    color:
+        inherit;
 
 }
 
 
 button {
 
-    font: inherit;
+    font:
+        inherit;
 
 }
 
-
-/* ==============================================
-   LAYOUT
-   ============================================== */
 
 .shell {
 
@@ -94,45 +100,33 @@ button {
             calc(100% - 40px)
         );
 
-    margin: 0 auto;
+    margin:
+        0 auto;
 
 }
 
 
-.section {
-
-    padding:
-        72px 0;
-
-}
-
-
-.soft-section {
-
-    background:
-        #f3f6fb;
-
-}
-
-
-/* ==============================================
+/* ======================================
    HEADER
-   ============================================== */
+====================================== */
 
 .site-header {
 
-    position: sticky;
+    position:
+        sticky;
 
-    top: 0;
+    top:
+        0;
 
-    z-index: 30;
+    z-index:
+        100;
 
     background:
         rgba(
             251,
             250,
             246,
-            0.93
+            .95
         );
 
     backdrop-filter:
@@ -140,82 +134,84 @@ button {
 
     border-bottom:
         1px solid
-        rgba(
-            232,
-            230,
-            223,
-            0.85
-        );
+        var(--border);
 
 }
 
 
 .navbar {
 
-    height: 76px;
+    height:
+        76px;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
 }
 
 
 .brand {
 
-    display: flex;
+    display:
+        flex;
 
-    gap: 10px;
+    align-items:
+        center;
 
-    align-items: center;
+    gap:
+        10px;
 
-    font-weight: 850;
+    font-size:
+        1.2rem;
 
-    font-size: 1.2rem;
+    font-weight:
+        850;
 
 }
 
 
 .brand-mark {
 
-    width: 38px;
+    width:
+        40px;
 
-    height: 38px;
+    height:
+        40px;
 
-    border-radius: 14px;
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        14px;
+
+    color:
+        white;
 
     background:
         var(--blue);
 
-    color: white;
-
-    display: grid;
-
-    place-items: center;
-
-    font-weight: 900;
-
-    box-shadow:
-        0 8px 20px
-        rgba(
-            91,
-            131,
-            216,
-            .25
-        );
+    font-weight:
+        900;
 
 }
 
 
 .nav-links {
 
-    display: flex;
+    display:
+        flex;
 
-    gap: 8px;
-
-    align-items: center;
+    gap:
+        8px;
 
 }
 
@@ -225,12 +221,14 @@ button {
     padding:
         10px 14px;
 
-    border-radius: 12px;
+    border-radius:
+        12px;
 
     color:
         var(--muted);
 
-    font-weight: 650;
+    font-weight:
+        650;
 
 }
 
@@ -248,39 +246,29 @@ button {
 }
 
 
-.menu-toggle {
-
-    display: none;
-
-    border: 0;
-
-    background: transparent;
-
-    font-size: 1.6rem;
-
-    cursor: pointer;
-
-}
-
-
-/* ==============================================
+/* ======================================
    TYPOGRAPHY
-   ============================================== */
+====================================== */
 
 .eyebrow {
 
-    display: inline-block;
+    display:
+        inline-block;
 
-    font-size: .78rem;
-
-    letter-spacing: .15em;
-
-    font-weight: 800;
+    margin-bottom:
+        12px;
 
     color:
         var(--blue-dark);
 
-    margin-bottom: 12px;
+    font-size:
+        .76rem;
+
+    letter-spacing:
+        .15em;
+
+    font-weight:
+        850;
 
 }
 
@@ -289,7 +277,8 @@ h1,
 h2,
 h3 {
 
-    line-height: 1.16;
+    line-height:
+        1.16;
 
     margin:
         0 0 16px;
@@ -301,7 +290,7 @@ h1 {
 
     font-size:
         clamp(
-            2.7rem,
+            2.8rem,
             6vw,
             5rem
         );
@@ -337,49 +326,84 @@ h2 {
 
 h3 {
 
-    font-size: 1.35rem;
+    font-size:
+        1.3rem;
 
 }
 
 
 p {
 
-    color:
-        var(--muted);
-
     margin:
         0 0 18px;
+
+    color:
+        var(--muted);
 
 }
 
 
-/* ==============================================
-   BUTTONS
-   ============================================== */
+/* ======================================
+   HERO
+====================================== */
+
+.hero {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        60px;
+
+    align-items:
+        center;
+
+    padding:
+        80px 0;
+
+}
+
+
+.hero-copy > p {
+
+    max-width:
+        620px;
+
+    font-size:
+        1.1rem;
+
+}
+
 
 .button {
 
-    display: inline-flex;
+    display:
+        inline-flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
     padding:
-        13px 18px;
+        13px 19px;
 
-    border-radius: 14px;
+    border-radius:
+        14px;
 
-    font-weight: 780;
-
-    transition:
-        .2s ease;
+    font-weight:
+        800;
 
     border:
         1px solid
         transparent;
 
-    cursor: pointer;
+    transition:
+        .2s ease;
 
 }
 
@@ -394,14 +418,14 @@ p {
 
 .button.primary {
 
-    background:
-        var(--blue);
-
     color:
         white;
 
+    background:
+        var(--blue);
+
     box-shadow:
-        0 14px 28px
+        0 12px 25px
         rgba(
             91,
             131,
@@ -412,111 +436,73 @@ p {
 }
 
 
-.button.secondary {
+/* ======================================
+   HERO ILLUSTRATION
+====================================== */
 
-    background:
-        white;
+.hero-illustration {
 
-    border-color:
-        var(--border);
+    min-height:
+        400px;
 
-}
+    position:
+        relative;
 
+    overflow:
+        hidden;
 
-/* ==============================================
-   HERO
-   ============================================== */
-
-.hero {
-
-    display: grid;
-
-    grid-template-columns:
-        1.05fr .95fr;
-
-    gap: 60px;
-
-    align-items: center;
-
-    padding:
-        76px 0
-        72px;
-
-}
-
-
-.hero-copy p {
-
-    font-size:
-        1.12rem;
-
-    max-width: 620px;
-
-}
-
-
-.hero-actions {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 12px;
-
-    margin-top: 26px;
-
-}
-
-
-.hero-art {
-
-    position: relative;
-
-    min-height: 390px;
-
-    border-radius: 34px;
+    border-radius:
+        34px;
 
     background:
         linear-gradient(
             135deg,
             #edf3ff,
-            #fff9e9
+            #fff8df
         );
-
-    overflow: hidden;
 
 }
 
 
 .sun {
 
-    position: absolute;
+    position:
+        absolute;
 
-    width: 110px;
+    top:
+        35px;
 
-    height: 110px;
+    right:
+        45px;
 
-    border-radius: 50%;
+    width:
+        100px;
+
+    height:
+        100px;
+
+    border-radius:
+        50%;
 
     background:
-        #f5d671;
-
-    right: 40px;
-
-    top: 34px;
+        #f5d56c;
 
 }
 
 
 .cloud {
 
-    position: absolute;
+    position:
+        absolute;
+
+    height:
+        36px;
 
     background:
         white;
 
     border-radius:
-        60px;
+        50px;
 
 }
 
@@ -525,9 +511,11 @@ p {
 
 .cloud::after {
 
-    content: "";
+    content:
+        "";
 
-    position: absolute;
+    position:
+        absolute;
 
     background:
         white;
@@ -538,91 +526,112 @@ p {
 }
 
 
-.cloud-a {
+.cloud-one {
 
-    width: 140px;
+    width:
+        140px;
 
-    height: 38px;
+    top:
+        65px;
 
-    left: 30px;
-
-    top: 55px;
-
-}
-
-
-.cloud-a::before {
-
-    width: 55px;
-
-    height: 55px;
-
-    left: 22px;
-
-    top: -22px;
+    left:
+        35px;
 
 }
 
 
-.cloud-a::after {
+.cloud-one::before {
 
-    width: 68px;
+    width:
+        55px;
 
-    height: 68px;
+    height:
+        55px;
 
-    right: 20px;
+    left:
+        20px;
 
-    top: -30px;
-
-}
-
-
-.cloud-b {
-
-    width: 100px;
-
-    height: 30px;
-
-    right: 20px;
-
-    bottom: 80px;
+    top:
+        -22px;
 
 }
 
 
-.cloud-b::before {
+.cloud-one::after {
 
-    width: 48px;
+    width:
+        65px;
 
-    height: 48px;
+    height:
+        65px;
 
-    left: 15px;
+    right:
+        20px;
 
-    top: -18px;
-
-}
-
-
-.cloud-b::after {
-
-    width: 50px;
-
-    height: 50px;
-
-    right: 12px;
-
-    top: -25px;
+    top:
+        -30px;
 
 }
 
 
-.book-card {
+.cloud-two {
 
-    position: absolute;
+    width:
+        100px;
 
-    left: 50%;
+    right:
+        20px;
 
-    top: 55%;
+    bottom:
+        70px;
+
+}
+
+
+.cloud-two::before {
+
+    width:
+        45px;
+
+    height:
+        45px;
+
+    left:
+        12px;
+
+    top:
+        -18px;
+
+}
+
+
+.cloud-two::after {
+
+    width:
+        50px;
+
+    height:
+        50px;
+
+    right:
+        12px;
+
+    top:
+        -24px;
+
+}
+
+
+.book {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        57%;
 
     transform:
         translate(
@@ -631,33 +640,46 @@ p {
         )
         rotate(-5deg);
 
-    width: 250px;
+    width:
+        255px;
 
-    height: 190px;
+    height:
+        185px;
 
-    border-radius: 18px;
+    padding:
+        20px;
 
-    background: white;
-
-    box-shadow:
-        var(--shadow);
-
-    padding: 20px;
-
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
         1fr 1fr;
 
-    gap: 10px;
+    gap:
+        10px;
+
+    background:
+        white;
+
+    border-radius:
+        20px;
+
+    box-shadow:
+        var(--shadow);
 
 }
 
 
-.book-cover {
+.book-front {
 
-    grid-row:
-        1 / 3;
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    padding:
+        18px;
 
     background:
         var(--blue);
@@ -666,101 +688,106 @@ p {
         white;
 
     border-radius:
-        12px;
+        13px;
 
-    padding: 18px;
-
-    font-weight: 850;
-
-    display: flex;
-
-    align-items: flex-end;
+    font-weight:
+        850;
 
 }
 
 
-.book-page {
+.book-pages {
 
-    padding: 10px;
+    display:
+        flex;
 
-    display: flex;
+    flex-direction:
+        column;
 
-    flex-direction: column;
+    justify-content:
+        center;
 
-    justify-content: center;
+    gap:
+        13px;
 
-    gap: 12px;
+    padding:
+        10px;
 
 }
 
 
-.book-line {
+.book-pages span {
 
-    height: 10px;
+    display:
+        block;
 
-    border-radius: 10px;
+    width:
+        100%;
+
+    height:
+        9px;
 
     background:
         #dfe6f4;
 
-}
-
-
-.book-line.long {
-
-    width: 100%;
+    border-radius:
+        10px;
 
 }
 
 
-.book-line.short {
+.book-pages span:last-child {
 
-    width: 60%;
+    width:
+        60%;
 
 }
 
 
-.floating-note,
+.speech {
 
-.floating-word {
-
-    position: absolute;
+    position:
+        absolute;
 
     padding:
         10px 14px;
 
-    border-radius: 14px;
+    background:
+        white;
 
-    font-weight: 750;
+    border-radius:
+        14px;
+
+    font-weight:
+        750;
 
     box-shadow:
         var(--shadow);
 
     animation:
-        float 4.5s
-        ease-in-out
-        infinite;
+        floating 4s ease-in-out infinite;
 
 }
 
 
-.note-a {
+.speech-one {
 
-    left: 25px;
+    left:
+        25px;
 
-    top: 155px;
-
-    background:
-        white;
+    top:
+        165px;
 
 }
 
 
-.note-b {
+.speech-two {
 
-    right: 18px;
+    right:
+        18px;
 
-    top: 170px;
+    top:
+        185px;
 
     background:
         var(--yellow);
@@ -771,52 +798,46 @@ p {
 }
 
 
-.floating-word {
-
-    left: 46px;
-
-    bottom: 50px;
-
-    background:
-        var(--green);
-
-    animation-delay:
-        -2s;
-
-}
-
-
-@keyframes float {
+@keyframes floating {
 
     50% {
 
         transform:
-            translateY(-8px)
-            rotate(1deg);
+            translateY(-8px);
 
     }
 
 }
 
 
-/* ==============================================
-   SECTION HEADING
-   ============================================== */
+/* ======================================
+   LEVEL SECTION
+====================================== */
+
+.levels-section {
+
+    padding:
+        40px 0 90px;
+
+}
+
 
 .section-heading {
 
-    display: flex;
+    display:
+        flex;
 
     justify-content:
         space-between;
 
-    gap: 32px;
-
     align-items:
-        flex-end;
+        end;
+
+    gap:
+        30px;
 
     margin-bottom:
-        28px;
+        30px;
 
 }
 
@@ -824,178 +845,16 @@ p {
 .section-heading > p {
 
     max-width:
-        460px;
+        500px;
 
 }
 
 
-.section-heading.compact {
-
-    align-items:
-        flex-start;
-
-}
-
-
-/* ==============================================
-   LEVEL CARDS
-   ============================================== */
-
-.level-grid {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap:
-        20px;
-
-}
-
-
-.level-card {
-
-    background:
-        white;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        var(--radius);
-
-    padding:
-        26px;
-
-    box-shadow:
-        0 8px 22px
-        rgba(
-            47,
-            59,
-            84,
-            .05
-        );
-
-    transition:
-        .25s ease;
-
-}
-
-
-.level-card:hover {
-
-    transform:
-        translateY(-5px);
-
-    box-shadow:
-        var(--shadow);
-
-}
-
-
-.level-card p {
-
-    min-height:
-        95px;
-
-}
-
-
-.level-card ul {
-
-    margin:
-        0 0 22px;
-
-    padding-left:
-        18px;
-
-    color:
-        var(--muted);
-
-}
-
-
-.level-badge {
-
-    display:
-        inline-flex;
-
-    padding:
-        7px 11px;
-
-    border-radius:
-        999px;
-
-    background:
-        var(--blue-soft);
-
-    color:
-        var(--blue-dark);
-
-    font-weight:
-        850;
-
-    font-size:
-        .82rem;
-
-}
-
-
-.level-card.a2
-.level-badge {
-
-    background:
-        #fff4d5;
-
-    color:
-        #9b7614;
-
-}
-
-
-.level-card.b1
-.level-badge {
-
-    background:
-        #e6f5ed;
-
-    color:
-        #317c54;
-
-}
-
-
-.level-card.b2
-.level-badge {
-
-    background:
-        #eee8fb;
-
-    color:
-        #7259a5;
-
-}
-
-
-.card-arrow {
-
-    font-weight:
-        800;
-
-    color:
-        var(--blue-dark);
-
-}
-
-
-/* ==============================================
-   FEATURE CARDS
-   ============================================== */
-
-.feature-grid {
+/* ======================================
+   LEVEL BUTTONS
+====================================== */
+
+.level-tabs {
 
     display:
         grid;
@@ -1004,12 +863,10 @@ p {
         repeat(4,1fr);
 
     gap:
-        18px;
+        12px;
 
-}
-
-
-.feature-card {
+    padding:
+        10px;
 
     background:
         white;
@@ -1021,112 +878,8 @@ p {
     border-radius:
         22px;
 
-    padding:
-        24px;
-
-}
-
-
-.feature-icon {
-
-    font-size:
-        2rem;
-
-    display:
-        block;
-
-    margin-bottom:
-        16px;
-
-}
-
-
-/* ==============================================
-   PAGE HERO
-   ============================================== */
-
-.page-hero {
-
-    padding:
-        72px 0
-        40px;
-
-}
-
-
-.page-hero p {
-
-    font-size:
-        1.08rem;
-
-    max-width:
-        720px;
-
-}
-
-
-/* ==============================================
-   LEVEL TABS
-   ============================================== */
-
-.level-tabs-section {
-
-    position:
-        sticky;
-
-    top:
-        76px;
-
-    z-index:
-        20;
-
-    padding:
-        16px 0;
-
-    background:
-        rgba(
-            251,
-            250,
-            246,
-            .95
-        );
-
-    backdrop-filter:
-        blur(12px);
-
-    border-bottom:
-        1px solid
-        var(--border);
-
-}
-
-
-.level-tabs {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:
-        10px;
-
-    padding:
-        8px;
-
-    background:
-        white;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        20px;
-
     box-shadow:
-        0 8px 24px
+        0 10px 25px
         rgba(
             47,
             59,
@@ -1140,25 +893,25 @@ p {
 .level-tab {
 
     border:
-        0;
-
-    border-radius:
-        15px;
+        none;
 
     padding:
-        16px 10px;
+        18px 10px;
 
-    font-size:
-        1.15rem;
+    border-radius:
+        16px;
 
-    font-weight:
-        900;
+    background:
+        transparent;
 
     color:
         var(--muted);
 
-    background:
-        transparent;
+    font-size:
+        1.35rem;
+
+    font-weight:
+        900;
 
     cursor:
         pointer;
@@ -1185,17 +938,13 @@ p {
     color:
         white;
 
+}
+
+
+.level-tab.a1.active {
+
     background:
         var(--blue);
-
-    box-shadow:
-        0 10px 20px
-        rgba(
-            91,
-            131,
-            216,
-            .24
-        );
 
 }
 
@@ -1203,7 +952,7 @@ p {
 .level-tab.a2.active {
 
     background:
-        #e6b93f;
+        #e2ae27;
 
 }
 
@@ -1211,7 +960,7 @@ p {
 .level-tab.b1.active {
 
     background:
-        #4eae75;
+        #4fae76;
 
 }
 
@@ -1219,16 +968,57 @@ p {
 .level-tab.b2.active {
 
     background:
-        #8769c8;
+        #8668c5;
 
 }
 
 
-/* ==============================================
-   SELECTED LEVEL AREA
-   ============================================== */
+/* ======================================
+   LEVEL CONTENT
+====================================== */
 
-.selected-level-heading {
+.level-content {
+
+    margin-top:
+        35px;
+
+}
+
+
+.selected-level {
+
+    animation:
+        contentIn .35s ease;
+
+}
+
+
+@keyframes contentIn {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(10px);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+.level-banner {
 
     display:
         flex;
@@ -1237,49 +1027,49 @@ p {
         space-between;
 
     align-items:
-        flex-end;
+        end;
 
     gap:
-        35px;
-
-    margin-bottom:
-        40px;
+        30px;
 
     padding:
         30px;
 
+    margin-bottom:
+        38px;
+
     border-radius:
         28px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #edf3ff,
-            #fff9e9
-        );
 
     border:
         1px solid
         var(--border);
 
+    background:
+        linear-gradient(
+            135deg,
+            #edf3ff,
+            #fff8df
+        );
+
 }
 
 
-.selected-level-heading h2 {
+.level-banner h2 {
 
     margin-bottom:
-        10px;
+        8px;
 
 }
 
 
-.selected-level-goal {
+.level-goal {
 
     max-width:
         470px;
 
     padding:
-        18px;
+        17px;
 
     background:
         white;
@@ -1289,33 +1079,34 @@ p {
         var(--border);
 
     border-radius:
-        18px;
+        17px;
 
 }
 
 
-.selected-level-goal p {
+.level-goal p {
 
     margin:
-        6px 0 0;
+        5px 0 0;
 
 }
 
 
-.level-content-columns {
+.content-section {
 
-    display:
-        grid;
-
-    gap:
-        64px;
+    margin-bottom:
+        55px;
 
 }
 
 
-/* ==============================================
-   TOPICS
-   ============================================== */
+.content-section h2 {
+
+    margin-bottom:
+        22px;
+
+}
+
 
 .topic-grid {
 
@@ -1333,6 +1124,9 @@ p {
 
 .topic-card {
 
+    padding:
+        24px;
+
     background:
         white;
 
@@ -1343,11 +1137,8 @@ p {
     border-radius:
         22px;
 
-    padding:
-        22px;
-
     transition:
-        .22s ease;
+        .2s ease;
 
 }
 
@@ -1366,7 +1157,7 @@ p {
 .topic-icon {
 
     font-size:
-        1.9rem;
+        2rem;
 
     margin-bottom:
         12px;
@@ -1374,17 +1165,21 @@ p {
 }
 
 
-.topic-card .summary {
+.topic-card h3 {
 
-    min-height:
-        62px;
+    margin-bottom:
+        9px;
 
 }
 
 
-/* ==============================================
-   GRAMMAR LIST
-   ============================================== */
+.topic-card .button {
+
+    margin-top:
+        8px;
+
+}
+
 
 .grammar-list {
 
@@ -1392,12 +1187,27 @@ p {
         grid;
 
     gap:
-        14px;
+        13px;
 
 }
 
 
 .grammar-item {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        58px 1fr auto;
+
+    gap:
+        15px;
+
+    align-items:
+        center;
+
+    padding:
+        18px 20px;
 
     background:
         white;
@@ -1407,22 +1217,7 @@ p {
         var(--border);
 
     border-radius:
-        20px;
-
-    padding:
-        20px 22px;
-
-    display:
-        grid;
-
-    grid-template-columns:
-        65px 1fr auto;
-
-    gap:
-        15px;
-
-    align-items:
-        center;
+        18px;
 
 }
 
@@ -1435,23 +1230,23 @@ p {
     height:
         42px;
 
-    border-radius:
-        14px;
-
-    background:
-        var(--lavender);
-
     display:
         grid;
 
     place-items:
         center;
 
-    font-weight:
-        850;
+    background:
+        var(--purple);
 
     color:
-        #634b93;
+        #654a98;
+
+    border-radius:
+        13px;
+
+    font-weight:
+        850;
 
 }
 
@@ -1464,141 +1259,28 @@ p {
 }
 
 
-/* ==============================================
-   FILTERS
-   ============================================== */
+.empty-state {
 
-.filters {
-
-    display:
-        flex;
-
-    flex-wrap:
-        wrap;
-
-    gap:
-        10px;
-
-    margin-bottom:
-        14px;
-
-}
-
-
-.filter-btn {
-
-    border:
-        1px solid
-        var(--border);
+    padding:
+        30px;
 
     background:
         white;
 
+    border:
+        1px dashed
+        var(--border);
+
     border-radius:
-        999px;
-
-    padding:
-        10px 15px;
-
-    font-weight:
-        760;
+        20px;
 
     color:
         var(--muted);
 
-    cursor:
-        pointer;
-
 }
 
 
-.filter-btn.active {
-
-    background:
-        var(--blue);
-
-    border-color:
-        var(--blue);
-
-    color:
-        white;
-
-}
-
-
-/* ==============================================
-   VOCABULARY
-   ============================================== */
-
-.vocab-grid,
-.grammar-grid {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:
-        18px;
-
-}
-
-
-.vocab-card,
-.grammar-card {
-
-    background:
-        white;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        22px;
-
-    padding:
-        22px;
-
-}
-
-
-.vocab-word {
-
-    font-size:
-        1.6rem;
-
-    font-weight:
-        850;
-
-}
-
-
-.vocab-meta {
-
-    margin:
-        4px 0 14px;
-
-    color:
-        var(--blue-dark);
-
-    font-weight:
-        760;
-
-}
-
-
-.vocab-example {
-
-    padding:
-        14px;
-
-    background:
-        #f7f9fc;
-
-    border-radius:
-        14px;
+.empty-state strong {
 
     color:
         var(--ink);
@@ -1606,34 +1288,30 @@ p {
 }
 
 
-.grammar-card .level-badge {
-
-    margin-bottom:
-        16px;
-
-}
-
-
-.grammar-card .rule {
+.loading {
 
     padding:
-        12px 14px;
+        30px;
 
     background:
-        #f7f9fc;
+        white;
 
     border-radius:
-        14px;
+        20px;
 
-    margin-top:
-        14px;
+    border:
+        1px solid
+        var(--border);
+
+    color:
+        var(--muted);
 
 }
 
 
-/* ==============================================
-   MODAL
-   ============================================== */
+/* ======================================
+   DETAIL MODAL
+====================================== */
 
 .detail-modal {
 
@@ -1642,14 +1320,6 @@ p {
 
     inset:
         0;
-
-    background:
-        rgba(
-            30,
-            39,
-            55,
-            .45
-        );
 
     display:
         none;
@@ -1663,8 +1333,16 @@ p {
     padding:
         20px;
 
+    background:
+        rgba(
+            30,
+            39,
+            55,
+            .45
+        );
+
     z-index:
-        50;
+        200;
 
 }
 
@@ -1681,7 +1359,7 @@ p {
 
     width:
         min(
-            780px,
+            800px,
             100%
         );
 
@@ -1691,14 +1369,14 @@ p {
     overflow:
         auto;
 
+    padding:
+        32px;
+
     background:
         white;
 
     border-radius:
         28px;
-
-    padding:
-        30px;
 
     box-shadow:
         0 30px 80px
@@ -1720,20 +1398,11 @@ p {
     position:
         absolute;
 
-    right:
-        16px;
-
     top:
         16px;
 
-    border:
-        0;
-
-    background:
-        #f3f5f8;
-
-    border-radius:
-        12px;
+    right:
+        16px;
 
     width:
         42px;
@@ -1741,8 +1410,25 @@ p {
     height:
         42px;
 
+    border:
+        none;
+
+    border-radius:
+        12px;
+
+    background:
+        #f1f4f8;
+
     cursor:
         pointer;
+
+}
+
+
+.modal-card h2 {
+
+    padding-right:
+        55px;
 
 }
 
@@ -1750,7 +1436,7 @@ p {
 .detail-block {
 
     margin-top:
-        22px;
+        24px;
 
 }
 
@@ -1766,24 +1452,21 @@ p {
 .detail-box {
 
     padding:
-        16px;
-
-    border-radius:
-        16px;
+        17px;
 
     background:
         #f7f9fc;
 
-    margin-top:
-        8px;
+    border-radius:
+        16px;
 
 }
 
 
-.example-list {
+.detail-box ul {
 
     margin:
-        8px 0 0;
+        0;
 
     padding-left:
         20px;
@@ -1791,50 +1474,81 @@ p {
 }
 
 
-/* ==============================================
-   OTHER
-   ============================================== */
+.detail-image {
 
-.loading,
-.empty-state {
+    width:
+        100%;
+
+    margin-top:
+        12px;
+
+    border-radius:
+        18px;
+
+}
+
+
+/* ======================================
+   FEATURES
+====================================== */
+
+.soft-section {
+
+    background:
+        #f3f6fb;
 
     padding:
-        34px;
+        70px 0;
+
+}
+
+
+.feature-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:
+        18px;
+
+}
+
+
+.feature-card {
+
+    padding:
+        24px;
 
     background:
         white;
 
     border:
-        1px dashed
+        1px solid
         var(--border);
 
     border-radius:
-        20px;
-
-    color:
-        var(--muted);
+        22px;
 
 }
 
 
-.b2-empty {
-
-    min-height:
-        180px;
-
-}
-
-
-.b2-empty .empty-icon {
+.feature-icon {
 
     font-size:
         2rem;
 
     margin-bottom:
-        8px;
+        15px;
 
 }
 
+
+/* ======================================
+   FOOTER
+====================================== */
 
 .site-footer {
 
@@ -1844,9 +1558,6 @@ p {
 
     padding:
         35px 0;
-
-    color:
-        var(--muted);
 
 }
 
@@ -1859,70 +1570,35 @@ p {
     justify-content:
         space-between;
 
-    gap:
-        20px;
-
     align-items:
         center;
 
-}
-
-
-.footer-brand {
-
-    font-weight:
-        850;
-
-    color:
-        var(--ink);
+    gap:
+        20px;
 
 }
 
 
-.reveal {
+.footer-row p {
 
-    animation:
-        rise .7s
-        ease both;
-
-}
-
-
-@keyframes rise {
-
-    from {
-
-        opacity:
-            0;
-
-        transform:
-            translateY(14px);
-
-    }
-
-    to {
-
-        opacity:
-            1;
-
-        transform:
-            none;
-
-    }
+    margin:
+        5px 0 0;
 
 }
 
 
-/* ==============================================
-   TABLET
-   ============================================== */
+/* ======================================
+   RESPONSIVE
+====================================== */
 
-@media (max-width: 1000px) {
+@media (
+    max-width: 950px
+) {
 
-    .level-grid {
+    .hero {
 
         grid-template-columns:
-            repeat(2,1fr);
+            1fr;
 
     }
 
@@ -1935,8 +1611,15 @@ p {
     }
 
 
-    .vocab-grid,
-    .grammar-grid {
+    .topic-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .level-grid {
 
         grid-template-columns:
             repeat(2,1fr);
@@ -1946,11 +1629,9 @@ p {
 }
 
 
-/* ==============================================
-   MOBILE
-   ============================================== */
-
-@media (max-width: 700px) {
+@media (
+    max-width: 700px
+) {
 
     .shell {
 
@@ -1971,95 +1652,26 @@ p {
     }
 
 
-    .menu-toggle {
-
-        display:
-            block;
-
-    }
-
-
     .nav-links {
 
         display:
             none;
-
-        position:
-            absolute;
-
-        left:
-            14px;
-
-        right:
-            14px;
-
-        top:
-            72px;
-
-        background:
-            white;
-
-        border:
-            1px solid
-            var(--border);
-
-        border-radius:
-            18px;
-
-        padding:
-            8px;
-
-        box-shadow:
-            var(--shadow);
-
-        flex-direction:
-            column;
-
-        align-items:
-            stretch;
-
-    }
-
-
-    .nav-links.open {
-
-        display:
-            flex;
-
-    }
-
-
-    .nav-links a {
-
-        padding:
-            13px;
 
     }
 
 
     .hero {
 
-        grid-template-columns:
-            1fr;
-
         padding:
-            52px 0;
+            50px 0;
 
     }
 
 
-    .hero-art {
+    .hero-illustration {
 
         min-height:
-            320px;
-
-    }
-
-
-    .section {
-
-        padding:
-            52px 0;
+            330px;
 
     }
 
@@ -2068,51 +1680,6 @@ p {
 
         display:
             block;
-
-    }
-
-
-    .section-heading > p {
-
-        margin-top:
-            12px;
-
-    }
-
-
-    .level-grid,
-    .feature-grid,
-    .topic-grid,
-    .vocab-grid,
-    .grammar-grid {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-
-    .grammar-item {
-
-        grid-template-columns:
-            50px 1fr;
-
-    }
-
-
-    .grammar-item
-    .open-detail {
-
-        grid-column:
-            2;
-
-    }
-
-
-    .level-tabs-section {
-
-        top:
-            68px;
 
     }
 
@@ -2131,15 +1698,15 @@ p {
     .level-tab {
 
         padding:
-            12px 6px;
+            13px 5px;
 
         font-size:
-            1rem;
+            1.05rem;
 
     }
 
 
-    .selected-level-heading {
+    .level-banner {
 
         display:
             block;
@@ -2150,10 +1717,37 @@ p {
     }
 
 
-    .selected-level-goal {
+    .level-goal {
 
         margin-top:
             20px;
+
+    }
+
+
+    .feature-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .grammar-item {
+
+        grid-template-columns:
+            45px 1fr;
+
+    }
+
+
+    .grammar-item .button {
+
+        grid-column:
+            2;
+
+        justify-self:
+            start;
 
     }
 
@@ -2162,14 +1756,6 @@ p {
 
         display:
             block;
-
-    }
-
-
-    .footer-row p {
-
-        margin-top:
-            8px;
 
     }
 
