@@ -3,106 +3,150 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>DeutschWelt – Lernwelt</title>
 
-    <title>
-        Lernwelten – DeutschWelt
-    </title>
-
-    <meta
-        name="description"
-        content="DeutschWelt Lernwelten – A1, A2, B1 und B2."
-    >
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 
-<body data-page="learn">
-
-    <div id="site-header"></div>
+<body>
 
 
-    <main>
+<header class="site-header">
 
-        <!-- INTRO -->
-        <section class="page-hero shell">
+    <div class="header-inner">
 
-            <span class="eyebrow">
-                LERNWELTEN
-            </span>
-
-            <h1>
-                Dein Weg von A1 bis B2.
-            </h1>
-
-            <p>
-                Wähle oben dein Niveau und entdecke
-                alle Themen und Grammatikbereiche,
-                die du auf diesem Niveau wiederholen kannst.
-            </p>
-
-        </section>
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🇩🇪</span>
+            <span>DeutschWelt</span>
+        </a>
 
 
-        <!-- LEVEL TABS -->
-        <section class="level-tabs-section">
+        <nav class="main-nav">
 
-            <div class="shell">
+            <a href="index.html">
+                Startseite
+            </a>
 
-                <div
-                    id="level-tabs"
-                    class="level-tabs"
-                    role="tablist"
-                    aria-label="Sprachniveau"
-                >
+            <a href="lernen.html?level=A1" class="active">
+                Lernwelten
+            </a>
 
-                    <button
-                        class="level-tab a1 active"
-                        data-level-tab="A1"
-                        role="tab"
-                        aria-selected="true"
-                    >
-                        A1
-                    </button>
+            <a href="wortschatz.html">
+                Wortschatz
+            </a>
 
+            <a href="grammatik.html">
+                Grammatik
+            </a>
 
-                    <button
-                        class="level-tab a2"
-                        data-level-tab="A2"
-                        role="tab"
-                        aria-selected="false"
-                    >
-                        A2
-                    </button>
+        </nav>
+
+    </div>
+
+</header>
 
 
-                    <button
-                        class="level-tab b1"
-                        data-level-tab="B1"
-                        role="tab"
-                        aria-selected="false"
-                    >
-                        B1
-                    </button>
+
+<main class="learning-page">
 
 
-                    <button
-                        class="level-tab b2"
-                        data-level-tab="B2"
-                        role="tab"
-                        aria-selected="false"
-                    >
-                        B2
-                    </button>
+    <section class="learning-top">
+
+        <a href="index.html" class="back-link">
+            ← Zur Startseite
+        </a>
+
+
+        <div id="levelHeader" class="level-header">
+
+            <div>
+
+                <span id="levelEyebrow" class="eyebrow">
+                    Lernstufe
+                </span>
+
+                <h1 id="levelTitle">
+                    Deutsch lernen
+                </h1>
+
+                <p id="levelDescription">
+                    Inhalte werden geladen ...
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div id="otherLevels" class="other-levels">
+
+            <a href="lernen.html?level=A1" data-level-link="A1">A1</a>
+            <a href="lernen.html?level=A2" data-level-link="A2">A2</a>
+            <a href="lernen.html?level=B1" data-level-link="B1">B1</a>
+            <a href="lernen.html?level=B2" data-level-link="B2">B2</a>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="learning-layout">
+
+
+        <!-- LEFT SIDE -->
+
+        <aside class="topic-sidebar">
+
+            <div class="sidebar-heading">
+
+                <span class="eyebrow">
+                    Themen
+                </span>
+
+                <h2>
+                    Lerninhalte
+                </h2>
+
+            </div>
+
+
+            <div id="topicNavigation">
+
+                <div class="loading-message">
+                    Inhalte werden geladen ...
+                </div>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- RIGHT SIDE -->
+
+        <section class="topic-content-area">
+
+            <div id="topicContent">
+
+                <div class="welcome-content">
+
+                    <div class="welcome-icon">
+                        📖
+                    </div>
+
+                    <h2>
+                        Wähle ein Thema
+                    </h2>
+
+                    <p>
+                        Wähle links ein Thema aus.
+                        Die Erklärung erscheint hier.
+                    </p>
 
                 </div>
 
@@ -111,22 +155,37 @@
         </section>
 
 
-        <!-- SELECTED LEVEL CONTENT -->
-        <section class="section shell">
+    </section>
 
-            <div
-                id="level-tab-content"
-            ></div>
-
-        </section>
-
-    </main>
+</main>
 
 
-    <div id="site-footer"></div>
+
+<footer class="site-footer">
+
+    <div class="footer-inner">
+
+        <div>
+            <strong>DeutschWelt</strong>
+
+            <p>
+                Deutsch verstehen. Deutsch anwenden.
+            </p>
+        </div>
+
+        <div>
+            <p>
+                © 2026 DeutschWelt
+            </p>
+        </div>
+
+    </div>
+
+</footer>
 
 
-    <script src="script.js"></script>
+
+<script src="script.js"></script>
 
 </body>
 </html>
