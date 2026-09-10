@@ -1,44 +1,261 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DeutschWelt – Deutsch lernen & wiederholen</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DeutschWelt – Deutsch lernen & wiederholen</title>
+
+    <meta
+        name="description"
+        content="DeutschWelt – Deutsch lernen, verstehen und wiederholen. A1 bis B2."
+    >
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body data-page="home">
-<div id="site-header"></div>
-<main>
-<section class="hero shell">
-<div class="hero-copy reveal">
-<span class="eyebrow">DEUTSCH LERNEN · A1–B1</span>
-<h1>Deutsch lernen.<br><span>Verstehen. Wiederholen.</span></h1>
-<p>Eine freundliche Lernwelt mit klaren Erklärungen, echten Alltagssituationen und übersichtlichen Themen – ohne Quiz und ohne Lerndruck.</p>
-<div class="hero-actions">
-<a class="button primary" href="lernen.html">Lernwelten entdecken</a>
-<a class="button secondary" href="wortschatz.html">Wortschatz ansehen</a>
-</div>
-</div>
-<div class="hero-art" aria-hidden="true">
-<div class="sun"></div><div class="cloud cloud-a"></div><div class="cloud cloud-b"></div>
-<div class="book-card"><div class="book-cover">DeutschWelt</div><div class="book-page"><span class="book-line long"></span><span class="book-line"></span><span class="book-line short"></span></div></div>
-<div class="floating-note note-a">Hallo! 👋</div><div class="floating-note note-b">Guten Morgen ☀️</div><div class="floating-word">Deutsch</div>
-</div>
-</section>
-<section class="section shell">
-<div class="section-heading"><div><span class="eyebrow">DEINE LERNWELT</span><h2>Wähle dein Niveau</h2></div><p>A1, A2 und B1 werden direkt aus deiner Supabase-Datenbank geladen.</p></div>
-<div id="home-levels" class="level-grid"></div>
-</section>
-<section class="section soft-section"><div class="shell">
-<div class="section-heading"><div><span class="eyebrow">DEUTSCHWELT</span><h2>Alles zum Wiederholen</h2></div></div>
-<div class="feature-grid">
-<article class="feature-card reveal"><span class="feature-icon">🌱</span><h3>Lernwelten</h3><p>A1, A2 und B1 mit Themen und Grammatik.</p></article>
-<article class="feature-card reveal"><span class="feature-icon">📚</span><h3>Wortschatz</h3><p>Wörter mit Artikel, Plural, Bedeutung und Beispielen.</p></article>
-<article class="feature-card reveal"><span class="feature-icon">🧩</span><h3>Grammatik</h3><p>Regeln, Satzmuster und Merkhilfen in einfacher Sprache.</p></article>
-<article class="feature-card reveal"><span class="feature-icon">💛</span><h3>In deinem Tempo</h3><p>Öffnen, lesen, wiederholen – ganz entspannt.</p></article>
-</div></div></section>
-</main>
-<div id="site-footer"></div>
-<script src="script.js"></script>
+
+    <!-- Header -->
+    <div id="site-header"></div>
+
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero shell">
+
+            <div class="hero-copy reveal">
+
+                <span class="eyebrow">
+                    DEUTSCH LERNEN · A1–B2
+                </span>
+
+                <h1>
+                    Deutsch lernen.
+                    <br>
+                    <span>Verstehen. Wiederholen.</span>
+                </h1>
+
+                <p>
+                    Eine freundliche Lernwelt mit klaren Erklärungen,
+                    praktischen Beispielen und übersichtlichen Themen –
+                    ganz ohne Lerndruck.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a
+                        class="button primary"
+                        href="lernen.html"
+                    >
+                        Lernwelten entdecken
+                    </a>
+
+                    <a
+                        class="button secondary"
+                        href="wortschatz.html"
+                    >
+                        Wortschatz ansehen
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Simple visual illustration -->
+            <div
+                class="hero-art reveal"
+                aria-hidden="true"
+            >
+
+                <div class="sun"></div>
+
+                <div class="cloud cloud-a"></div>
+
+                <div class="cloud cloud-b"></div>
+
+
+                <div class="book-card">
+
+                    <div class="book-cover">
+                        DeutschWelt
+                    </div>
+
+                    <div class="book-page">
+
+                        <span class="book-line long"></span>
+
+                        <span class="book-line"></span>
+
+                        <span class="book-line short"></span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="floating-note note-a">
+                    Hallo! 👋
+                </div>
+
+                <div class="floating-note note-b">
+                    Guten Morgen ☀️
+                </div>
+
+                <div class="floating-word">
+                    Deutsch
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LEVELS -->
+        <section class="section shell">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        DEINE LERNWELT
+                    </span>
+
+                    <h2>
+                        Wähle dein Niveau
+                    </h2>
+
+                </div>
+
+                <p>
+                    A1, A2, B1 und B2 – mit Themen,
+                    Grammatik und Wortschatz aus deiner
+                    Supabase-Datenbank.
+                </p>
+
+            </div>
+
+
+            <div
+                id="home-levels"
+                class="level-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- FEATURES -->
+        <section class="section soft-section">
+
+            <div class="shell">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            DEUTSCHWELT
+                        </span>
+
+                        <h2>
+                            Alles zum Wiederholen
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature-grid">
+
+                    <article class="feature-card reveal">
+
+                        <span class="feature-icon">
+                            🌱
+                        </span>
+
+                        <h3>
+                            Lernwelten
+                        </h3>
+
+                        <p>
+                            A1 bis B2 mit verständlichen
+                            Themen und Grammatik.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card reveal">
+
+                        <span class="feature-icon">
+                            📚
+                        </span>
+
+                        <h3>
+                            Wortschatz
+                        </h3>
+
+                        <p>
+                            Wörter mit Artikel, Plural,
+                            Bedeutung und Beispielen.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card reveal">
+
+                        <span class="feature-icon">
+                            🧩
+                        </span>
+
+                        <h3>
+                            Grammatik
+                        </h3>
+
+                        <p>
+                            Regeln, Satzmuster,
+                            Beispiele und Merkhilfen.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card reveal">
+
+                        <span class="feature-icon">
+                            💛
+                        </span>
+
+                        <h3>
+                            In deinem Tempo
+                        </h3>
+
+                        <p>
+                            Öffnen, lesen und wiederholen –
+                            ganz entspannt.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <div id="site-footer"></div>
+
+
+    <script src="script.js"></script>
+
 </body>
 </html>
