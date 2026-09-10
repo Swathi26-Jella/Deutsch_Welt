@@ -1,12 +1,6 @@
 // ======================================================
 // DEUTSCHWELT
-// Supabase + Level Page
 // ======================================================
-
-
-// ------------------------------------------------------
-// SUPABASE SETTINGS
-// ------------------------------------------------------
 
 const SUPABASE_URL =
     "https://llxcyabptsbdtsdhkzkc.supabase.co";
@@ -15,59 +9,16 @@ const SUPABASE_ANON_KEY =
     "sb_publishable_MKh0z87kMiDAQX3jnaoADQ_-D0_XXd4";
 
 
-// ------------------------------------------------------
-// GLOBAL VARIABLES
-// ------------------------------------------------------
-
 let supabaseClient = null;
 
-let currentLevel = null;
+let currentLevel = "A1";
 
 let currentTopics = [];
 
-let currentGrammar = [];
 
-
-// ------------------------------------------------------
-// LEVEL INFORMATION
-// ------------------------------------------------------
-
-const levelInfo = {
-
-    A1: {
-        title: "A1 – Deutsch von Anfang an",
-        eyebrow: "A1 · Anfänger",
-        description:
-            "Lerne Deutsch Schritt für Schritt – vom Alphabet und den ersten Wörtern bis zu wichtigen Alltagssätzen und grundlegender Grammatik."
-    },
-
-    A2: {
-        title: "A2 – Deutsch im Alltag",
-        eyebrow: "A2 · Grundkenntnisse",
-        description:
-            "Festige deine Grundlagen und erweitere deinen Wortschatz und deine Grammatik für Alltag, Arbeit und Gespräche."
-    },
-
-    B1: {
-        title: "B1 – Sicherer Deutsch sprechen",
-        eyebrow: "B1 · Mittelstufe",
-        description:
-            "Baue deinen Wortschatz aus und lerne wichtige Strukturen für Alltag, Beruf, Gespräche und schriftliche Kommunikation."
-    },
-
-    B2: {
-        title: "B2 – Deutsch sicher anwenden",
-        eyebrow: "B2 · Fortgeschritten",
-        description:
-            "Vertiefe Grammatik, Wortschatz und sprachliche Strukturen für anspruchsvollere Gespräche und Texte."
-    }
-
-};
-
-
-// ------------------------------------------------------
-// LOAD SUPABASE
-// ------------------------------------------------------
+// ======================================================
+// LOAD SUPABASE LIBRARY
+// ======================================================
 
 function loadSupabaseLibrary() {
 
@@ -76,10 +27,9 @@ function loadSupabaseLibrary() {
         if (window.supabase) {
 
             resolve();
-
             return;
-        }
 
+        }
 
         const script =
             document.createElement("script");
@@ -87,24 +37,15 @@ function loadSupabaseLibrary() {
         script.src =
             "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
 
+        script.onload =
+            resolve;
 
-        script.onload = () => {
-
-            resolve();
-
-        };
-
-
-        script.onerror = () => {
-
-            reject(
+        script.onerror =
+            () => reject(
                 new Error(
-                    "Supabase JavaScript konnte nicht geladen werden."
+                    "Supabase konnte nicht geladen werden."
                 )
             );
-
-        };
-
 
         document.head.appendChild(script);
 
@@ -113,9 +54,9 @@ function loadSupabaseLibrary() {
 }
 
 
-// ------------------------------------------------------
-// CONNECT SUPABASE
-// ------------------------------------------------------
+// ======================================================
+// CONNECT
+// ======================================================
 
 async function connectSupabase() {
 
@@ -123,19 +64,16 @@ async function connectSupabase() {
 
         await loadSupabaseLibrary();
 
-
         if (
-            !SUPABASE_URL ||
             !SUPABASE_ANON_KEY ||
             SUPABASE_ANON_KEY.includes("PASTE_YOUR")
         ) {
 
             throw new Error(
-                "Supabase API Key wurde noch nicht eingetragen."
+                "Supabase Public Key fehlt."
             );
 
         }
-
 
         supabaseClient =
             window.supabase.createClient(
@@ -143,23 +81,13 @@ async function connectSupabase() {
                 SUPABASE_ANON_KEY
             );
 
-
         return true;
 
     }
 
     catch (error) {
 
-        console.error(
-            "Supabase connection error:",
-            error
-        );
-
-
-        showPageError(
-            "Die Verbindung zu den Lerninhalten konnte nicht hergestellt werden."
-        );
-
+        console.error(error);
 
         return false;
     }
@@ -167,228 +95,9 @@ async function connectSupabase() {
 }
 
 
-// ------------------------------------------------------
-// GET LEVEL FROM URL
-// ------------------------------------------------------
-
-function getLevelFromURL() {
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-
-    let level =
-        params.get("level");
-
-
-    if (!level) {
-
-        level = "A1";
-
-    }
-
-
-    level = level.toUpperCase();
-
-
-    if (
-        !["A1", "A2", "B1", "B2"]
-            .includes(level)
-    ) {
-
-        level = "A1";
-
-    }
-
-
-    return level;
-
-}
-
-
-// ------------------------------------------------------
-// UPDATE PAGE HEADER
-// ------------------------------------------------------
-
-function updateLevelHeader(level) {
-
-    const info =
-        levelInfo[level];
-
-
-    document.title =
-        `DeutschWelt – ${level}`;
-
-
-    const title =
-        document.getElementById(
-            "levelTitle"
-        );
-
-
-    const eyebrow =
-        document.getElementById(
-            "levelEyebrow"
-        );
-
-
-    const description =
-        document.getElementById(
-            "levelDescription"
-        );
-
-
-    if (title) {
-
-        title.textContent =
-            info.title;
-
-    }
-
-
-    if (eyebrow) {
-
-        eyebrow.textContent =
-            info.eyebrow;
-
-    }
-
-
-    if (description) {
-
-        description.textContent =
-            info.description;
-
-    }
-
-
-    updateLevelLinks(level);
-
-}
-
-
-// ------------------------------------------------------
-// ACTIVE LEVEL LINK
-// ------------------------------------------------------
-
-function updateLevelLinks(level) {
-
-    const links =
-        document.querySelectorAll(
-            "[data-level-link]"
-        );
-
-
-    links.forEach(link => {
-
-        const linkLevel =
-            link.dataset.levelLink;
-
-
-        if (linkLevel === level) {
-
-            link.classList.add("selected");
-
-        }
-
-        else {
-
-            link.classList.remove("selected");
-
-        }
-
-    });
-
-}
-
-
-// ------------------------------------------------------
-// GET TOPICS
-// ------------------------------------------------------
-
-async function fetchTopics(level) {
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("topics")
-            .select("*")
-            .eq("level", level)
-            .eq("published", true)
-            .order(
-                "sort_order",
-                {
-                    ascending: true
-                }
-            );
-
-
-    if (error) {
-
-        console.error(
-            "Topic query error:",
-            error
-        );
-
-
-        throw error;
-
-    }
-
-
-    return data || [];
-
-}
-
-
-// ------------------------------------------------------
-// GET GRAMMAR
-// ------------------------------------------------------
-
-async function fetchGrammar(level) {
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("grammar_topics")
-            .select("*")
-            .eq("level", level)
-            .eq("published", true)
-            .order(
-                "sort_order",
-                {
-                    ascending: true
-                }
-            );
-
-
-    if (error) {
-
-        console.error(
-            "Grammar query error:",
-            error
-        );
-
-
-        return [];
-
-    }
-
-
-    return data || [];
-
-}
-
-
-// ------------------------------------------------------
+// ======================================================
 // ESCAPE HTML
-// ------------------------------------------------------
+// ======================================================
 
 function escapeHTML(value) {
 
@@ -401,7 +110,6 @@ function escapeHTML(value) {
 
     }
 
-
     return String(value)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
@@ -412,40 +120,28 @@ function escapeHTML(value) {
 }
 
 
-// ------------------------------------------------------
-// PARSE JSON SAFELY
-// ------------------------------------------------------
+// ======================================================
+// JSON ARRAY
+// ======================================================
 
 function parseArray(value) {
 
     if (!value) {
-
         return [];
-
     }
-
 
     if (Array.isArray(value)) {
-
         return value;
-
     }
-
 
     try {
 
         const parsed =
             JSON.parse(value);
 
-
-        if (Array.isArray(parsed)) {
-
-            return parsed;
-
-        }
-
-
-        return [parsed];
+        return Array.isArray(parsed)
+            ? parsed
+            : [];
 
     }
 
@@ -458,11 +154,244 @@ function parseArray(value) {
 }
 
 
-// ------------------------------------------------------
-// RENDER TOPIC NAVIGATION
-// ------------------------------------------------------
+// ======================================================
+// LEVEL FROM URL
+// ======================================================
 
-function renderTopicNavigation() {
+function getLevelFromURL() {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    let level =
+        params.get("level") || "A1";
+
+    level =
+        level.toUpperCase();
+
+    if (
+        !["A1", "A2", "B1", "B2"]
+            .includes(level)
+    ) {
+
+        level = "A1";
+
+    }
+
+    return level;
+
+}
+
+
+// ======================================================
+// LEARNING PAGE
+// ======================================================
+
+async function loadLearningPage() {
+
+    const navigation =
+        document.getElementById(
+            "topicNavigation"
+        );
+
+    if (!navigation) {
+        return;
+    }
+
+
+    currentLevel =
+        getLevelFromURL();
+
+
+    const title =
+        document.getElementById(
+            "levelTitle"
+        );
+
+    const eyebrow =
+        document.getElementById(
+            "levelEyebrow"
+        );
+
+    const description =
+        document.getElementById(
+            "levelDescription"
+        );
+
+
+    const descriptions = {
+
+        A1:
+            "Lerne Deutsch von Anfang an – Alphabet, Aussprache, Zahlen, Alltag und grundlegende Grammatik.",
+
+        A2:
+            "Erweitere deine Grundlagen und kommuniziere sicherer in vertrauten Alltagssituationen.",
+
+        B1:
+            "Sprich zusammenhängend über Erfahrungen, Arbeit, Alltag, Pläne und vertraute Themen.",
+
+        B2:
+            "Vertiefe deine Deutschkenntnisse und lerne komplexere Strukturen für Beruf und Alltag."
+
+    };
+
+
+    const names = {
+
+        A1:
+            "A1 – Deutsch von Anfang an",
+
+        A2:
+            "A2 – Deutsch im Alltag",
+
+        B1:
+            "B1 – Selbstständig Deutsch sprechen",
+
+        B2:
+            "B2 – Deutsch sicher anwenden"
+
+    };
+
+
+    if (title) {
+
+        title.textContent =
+            names[currentLevel];
+
+    }
+
+
+    if (eyebrow) {
+
+        eyebrow.textContent =
+            `${currentLevel} · Lernstufe`;
+
+    }
+
+
+    if (description) {
+
+        description.textContent =
+            descriptions[currentLevel];
+
+    }
+
+
+    navigation.innerHTML = `
+
+        <div class="loading-message">
+
+            <div class="loading-spinner"></div>
+
+            Inhalte werden geladen ...
+
+        </div>
+
+    `;
+
+
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("topics")
+                .select("*")
+                .eq("level", currentLevel)
+                .eq("published", true)
+                .order(
+                    "sort_order",
+                    {
+                        ascending: true
+                    }
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        currentTopics =
+            data || [];
+
+
+        renderLearningNavigation();
+
+
+        if (currentTopics.length) {
+
+            showTopic(
+                currentTopics[0].id
+            );
+
+        }
+
+        else {
+
+            document.getElementById(
+                "topicContent"
+            ).innerHTML = `
+
+                <div class="welcome-content">
+
+                    <div class="welcome-icon">
+                        📚
+                    </div>
+
+                    <h2>
+                        Noch keine Inhalte
+                    </h2>
+
+                    <p>
+                        Für ${currentLevel}
+                        wurden noch keine
+                        Inhalte veröffentlicht.
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        navigation.innerHTML = `
+
+            <div class="error-message">
+
+                <strong>
+                    Inhalte konnten nicht geladen werden.
+                </strong>
+
+                <p>
+                    Prüfe deine Supabase-Verbindung
+                    und die RLS-Regeln.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+// ======================================================
+// LEARNING NAVIGATION
+// ======================================================
+
+function renderLearningNavigation() {
 
     const navigation =
         document.getElementById(
@@ -471,31 +400,6 @@ function renderTopicNavigation() {
 
 
     navigation.innerHTML = "";
-
-
-    if (!currentTopics.length) {
-
-        navigation.innerHTML = `
-
-            <div class="empty-sidebar">
-
-                <div class="empty-icon">
-                    📚
-                </div>
-
-                <p>
-                    Für dieses Niveau wurden
-                    noch keine Themen hinzugefügt.
-                </p>
-
-            </div>
-
-        `;
-
-
-        return;
-
-    }
 
 
     const categories = {};
@@ -515,122 +419,128 @@ function renderTopicNavigation() {
         }
 
 
-        categories[category].push(topic);
+        categories[category].push(
+            topic
+        );
 
     });
 
 
-    Object.keys(categories).forEach(category => {
+    Object.keys(categories)
+        .forEach(category => {
 
-        const categoryBlock =
-            document.createElement("div");
+            const block =
+                document.createElement(
+                    "div"
+                );
 
-
-        categoryBlock.className =
-            "topic-category";
-
-
-        const heading =
-            document.createElement("h3");
+            block.className =
+                "topic-category";
 
 
-        heading.textContent =
-            category;
+            const heading =
+                document.createElement(
+                    "h3"
+                );
+
+            heading.textContent =
+                category;
 
 
-        categoryBlock.appendChild(
-            heading
-        );
-
-
-        categories[category].forEach(topic => {
-
-            const button =
-                document.createElement("button");
-
-
-            button.type =
-                "button";
-
-
-            button.className =
-                "topic-button";
-
-
-            button.dataset.topicId =
-                topic.id;
-
-
-            button.innerHTML = `
-
-                <span class="topic-icon">
-                    ${escapeHTML(topic.icon || "📘")}
-                </span>
-
-                <span class="topic-button-text">
-                    ${escapeHTML(topic.title)}
-                </span>
-
-            `;
-
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    showTopic(topic.id);
-
-                }
+            block.appendChild(
+                heading
             );
 
 
-            categoryBlock.appendChild(
-                button
+            categories[category]
+                .forEach(topic => {
+
+                    const button =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    button.type =
+                        "button";
+
+
+                    button.className =
+                        "topic-button";
+
+
+                    button.dataset.topicId =
+                        topic.id;
+
+
+                    button.innerHTML = `
+
+                        <span class="topic-icon">
+                            ${escapeHTML(
+                                topic.icon || "📘"
+                            )}
+                        </span>
+
+                        <span class="topic-button-text">
+                            ${escapeHTML(
+                                topic.title
+                            )}
+                        </span>
+
+                    `;
+
+
+                    button.addEventListener(
+                        "click",
+                        () => {
+
+                            showTopic(
+                                topic.id
+                            );
+
+                        }
+                    );
+
+
+                    block.appendChild(
+                        button
+                    );
+
+                });
+
+
+            navigation.appendChild(
+                block
             );
 
         });
 
-
-        navigation.appendChild(
-            categoryBlock
-        );
-
-    });
-
 }
 
 
-// ------------------------------------------------------
+// ======================================================
 // SHOW TOPIC
-// ------------------------------------------------------
+// ======================================================
 
-function showTopic(topicId) {
+function showTopic(id) {
 
     const topic =
         currentTopics.find(
             item =>
                 String(item.id) ===
-                String(topicId)
+                String(id)
         );
 
 
     if (!topic) {
-
-        console.error(
-            "Topic not found:",
-            topicId
-        );
-
-
         return;
-
     }
 
 
-    // remove active from all buttons
-
     document
-        .querySelectorAll(".topic-button")
+        .querySelectorAll(
+            ".topic-button"
+        )
         .forEach(button => {
 
             button.classList.remove(
@@ -640,52 +550,34 @@ function showTopic(topicId) {
         });
 
 
-    // activate selected button
-
-    const selectedButton =
+    const selected =
         document.querySelector(
-            `.topic-button[data-topic-id="${topicId}"]`
+            `.topic-button[data-topic-id="${id}"]`
         );
 
 
-    if (selectedButton) {
+    if (selected) {
 
-        selectedButton.classList.add(
+        selected.classList.add(
             "active"
         );
 
     }
 
 
-    const content =
-        document.getElementById(
-            "topicContent"
+    document.getElementById(
+        "topicContent"
+    ).innerHTML =
+        buildTopicHTML(
+            topic
         );
-
-
-    content.innerHTML =
-        buildTopicHTML(topic);
-
-
-    // Move view to content on small screens
-
-    if (
-        window.innerWidth < 850
-    ) {
-
-        content.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-    }
 
 }
 
 
-// ------------------------------------------------------
-// BUILD TOPIC CONTENT
-// ------------------------------------------------------
+// ======================================================
+// TOPIC HTML
+// ======================================================
 
 function buildTopicHTML(topic) {
 
@@ -694,124 +586,15 @@ function buildTopicHTML(topic) {
             topic.key_points
         );
 
-
     const patterns =
         parseArray(
             topic.sentence_patterns
         );
 
-
     const examples =
         parseArray(
             topic.examples
         );
-
-
-    let keyPointHTML = "";
-
-    if (keyPoints.length) {
-
-        keyPointHTML = `
-
-            <section class="content-section">
-
-                <h3>
-                    ⭐ Wichtig
-                </h3>
-
-                <ul class="content-list">
-
-                    ${keyPoints.map(item => `
-                        <li>
-                            ${escapeHTML(item)}
-                        </li>
-                    `).join("")}
-
-                </ul>
-
-            </section>
-
-        `;
-
-    }
-
-
-    let patternsHTML = "";
-
-    if (patterns.length) {
-
-        patternsHTML = `
-
-            <section class="content-section">
-
-                <h3>
-                    🧩 Satzmuster
-                </h3>
-
-                <div class="pattern-list">
-
-                    ${patterns.map(item => `
-                        <div class="pattern-box">
-                            ${escapeHTML(item)}
-                        </div>
-                    `).join("")}
-
-                </div>
-
-            </section>
-
-        `;
-
-    }
-
-
-    let examplesHTML = "";
-
-    if (examples.length) {
-
-        examplesHTML = `
-
-            <section class="content-section">
-
-                <h3>
-                    💬 Beispiele
-                </h3>
-
-                <div class="example-list">
-
-                    ${examples.map(item => `
-                        <div class="example-box">
-                            ${escapeHTML(item)}
-                        </div>
-                    `).join("")}
-
-                </div>
-
-            </section>
-
-        `;
-
-    }
-
-
-    let imageHTML = "";
-
-    if (topic.image_url) {
-
-        imageHTML = `
-
-            <div class="topic-image">
-
-                <img
-                    src="${escapeHTML(topic.image_url)}"
-                    alt="${escapeHTML(topic.title)}"
-                >
-
-            </div>
-
-        `;
-
-    }
 
 
     return `
@@ -821,35 +604,36 @@ function buildTopicHTML(topic) {
             <div class="topic-article-header">
 
                 <div class="article-icon">
-                    ${escapeHTML(topic.icon || "📘")}
+
+                    ${escapeHTML(
+                        topic.icon || "📘"
+                    )}
+
                 </div>
 
                 <div>
 
                     <span class="article-category">
-                        ${escapeHTML(topic.category || "")}
+                        ${escapeHTML(
+                            topic.category || ""
+                        )}
                     </span>
 
                     <h2>
-                        ${escapeHTML(topic.title)}
+                        ${escapeHTML(
+                            topic.title
+                        )}
                     </h2>
 
-                    ${
-                        topic.summary
-                        ?
-                        `<p class="article-summary">
-                            ${escapeHTML(topic.summary)}
-                        </p>`
-                        :
-                        ""
-                    }
+                    <p class="article-summary">
+                        ${escapeHTML(
+                            topic.summary || ""
+                        )}
+                    </p>
 
                 </div>
 
             </div>
-
-
-            ${imageHTML}
 
 
             <section class="content-section first-section">
@@ -860,29 +644,97 @@ function buildTopicHTML(topic) {
 
                 <div class="explanation">
 
-                    ${
-                        topic.explanation
-                        ?
-                        escapeHTML(
-                            topic.explanation
-                        ).replace(
-                            /\n/g,
-                            "<br>"
-                        )
-                        :
-                        "Noch keine Erklärung vorhanden."
-                    }
+                    ${escapeHTML(
+                        topic.explanation || ""
+                    ).replace(
+                        /\n/g,
+                        "<br>"
+                    )}
 
                 </div>
 
             </section>
 
 
-            ${keyPointHTML}
+            ${
+                keyPoints.length
+                ?
+                `
+                <section class="content-section">
 
-            ${patternsHTML}
+                    <h3>
+                        ⭐ Wichtig
+                    </h3>
 
-            ${examplesHTML}
+                    <ul class="content-list">
+
+                        ${keyPoints.map(item => `
+                            <li>
+                                ${escapeHTML(item)}
+                            </li>
+                        `).join("")}
+
+                    </ul>
+
+                </section>
+                `
+                :
+                ""
+            }
+
+
+            ${
+                patterns.length
+                ?
+                `
+                <section class="content-section">
+
+                    <h3>
+                        🧩 Satzmuster
+                    </h3>
+
+                    <div class="pattern-list">
+
+                        ${patterns.map(item => `
+                            <div class="pattern-box">
+                                ${escapeHTML(item)}
+                            </div>
+                        `).join("")}
+
+                    </div>
+
+                </section>
+                `
+                :
+                ""
+            }
+
+
+            ${
+                examples.length
+                ?
+                `
+                <section class="content-section">
+
+                    <h3>
+                        💬 Beispiele
+                    </h3>
+
+                    <div class="example-list">
+
+                        ${examples.map(item => `
+                            <div class="example-box">
+                                ${escapeHTML(item)}
+                            </div>
+                        `).join("")}
+
+                    </div>
+
+                </section>
+                `
+                :
+                ""
+            }
 
 
             ${
@@ -902,7 +754,9 @@ function buildTopicHTML(topic) {
                         </strong>
 
                         <p>
-                            ${escapeHTML(topic.merke)}
+                            ${escapeHTML(
+                                topic.merke
+                            )}
                         </p>
 
                     </div>
@@ -920,57 +774,30 @@ function buildTopicHTML(topic) {
 }
 
 
-// ------------------------------------------------------
-// LOAD LEVEL
-// ------------------------------------------------------
+// ======================================================
+// VOCABULARY PAGE
+// ======================================================
 
-async function loadLevel(level) {
+async function loadVocabulary(level) {
 
-    currentLevel =
-        level;
-
-
-    updateLevelHeader(
-        level
-    );
-
-
-    const navigation =
+    const grid =
         document.getElementById(
-            "topicNavigation"
+            "vocabularyGrid"
         );
 
 
-    const content =
-        document.getElementById(
-            "topicContent"
-        );
+    if (!grid) {
+        return;
+    }
 
 
-    navigation.innerHTML = `
+    grid.innerHTML = `
 
         <div class="loading-message">
 
             <div class="loading-spinner"></div>
 
-            Themen werden geladen ...
-
-        </div>
-
-    `;
-
-
-    content.innerHTML = `
-
-        <div class="welcome-content">
-
-            <div class="welcome-icon">
-                ⏳
-            </div>
-
-            <h2>
-                Inhalte werden geladen ...
-            </h2>
+            Wortschatz wird geladen ...
 
         </div>
 
@@ -979,42 +806,31 @@ async function loadLevel(level) {
 
     try {
 
-        // Load both at the same time
-
-        const [
-            topics,
-            grammar
-        ] =
-            await Promise.all([
-                fetchTopics(level),
-                fetchGrammar(level)
-            ]);
-
-
-        currentTopics =
-            topics;
-
-
-        currentGrammar =
-            grammar;
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("vocabulary")
+                .select("*")
+                .eq("level", level)
+                .eq("published", true)
+                .order(
+                    "sort_order",
+                    {
+                        ascending: true
+                    }
+                );
 
 
-        renderTopicNavigation();
-
-
-        if (currentTopics.length) {
-
-            // Automatically show first topic
-
-            showTopic(
-                currentTopics[0].id
-            );
-
+        if (error) {
+            throw error;
         }
 
-        else {
 
-            content.innerHTML = `
+        if (!data || !data.length) {
+
+            grid.innerHTML = `
 
                 <div class="welcome-content">
 
@@ -1023,66 +839,119 @@ async function loadLevel(level) {
                     </div>
 
                     <h2>
-                        Noch keine Inhalte
+                        Noch kein Wortschatz
                     </h2>
 
                     <p>
                         Für ${level} wurden noch
-                        keine Themen veröffentlicht.
+                        keine Wörter hinzugefügt.
                     </p>
 
                 </div>
 
             `;
 
+            return;
+
         }
 
+
+        grid.innerHTML = `
+
+            <div class="vocabulary-grid">
+
+                ${data.map(word => `
+
+                    <article class="vocabulary-card">
+
+                        <div class="vocabulary-word">
+
+                            <span class="vocabulary-article">
+                                ${escapeHTML(
+                                    word.article || ""
+                                )}
+                            </span>
+
+                            <strong>
+                                ${escapeHTML(
+                                    word.word
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        ${
+                            word.plural
+                            ?
+                            `
+                            <div class="vocabulary-plural">
+                                Plural:
+                                ${escapeHTML(
+                                    word.plural
+                                )}
+                            </div>
+                            `
+                            :
+                            ""
+                        }
+
+
+                        <div class="vocabulary-meaning">
+
+                            ${escapeHTML(
+                                word.meaning
+                            )}
+
+                        </div>
+
+
+                        <div class="vocabulary-example">
+
+                            ${escapeHTML(
+                                word.example
+                            )}
+
+                        </div>
+
+
+                        ${
+                            word.note
+                            ?
+                            `
+                            <div class="vocabulary-note">
+
+                                💡
+                                ${escapeHTML(
+                                    word.note
+                                )}
+
+                            </div>
+                            `
+                            :
+                            ""
+                        }
+
+                    </article>
+
+                `).join("")}
+
+            </div>
+
+        `;
 
     }
 
     catch (error) {
 
-        console.error(
-            "Loading level failed:",
-            error
-        );
+        console.error(error);
 
-
-        navigation.innerHTML = `
+        grid.innerHTML = `
 
             <div class="error-message">
 
-                <strong>
-                    Inhalte konnten nicht geladen werden.
-                </strong>
-
-                <p>
-                    Prüfe deine Supabase URL,
-                    deinen Public Key und die
-                    RLS-Einstellungen.
-                </p>
-
-            </div>
-
-        `;
-
-
-        content.innerHTML = `
-
-            <div class="welcome-content">
-
-                <div class="welcome-icon">
-                    ⚠️
-                </div>
-
-                <h2>
-                    Verbindung fehlgeschlagen
-                </h2>
-
-                <p>
-                    Die Lerninhalte konnten nicht
-                    aus Supabase geladen werden.
-                </p>
+                Die Wörter konnten nicht
+                geladen werden.
 
             </div>
 
@@ -1093,71 +962,412 @@ async function loadLevel(level) {
 }
 
 
-// ------------------------------------------------------
-// PAGE ERROR
-// ------------------------------------------------------
+// ======================================================
+// GRAMMAR PAGE
+// ======================================================
 
-function showPageError(message) {
+async function loadGrammar(level) {
 
-    const content =
+    const grid =
         document.getElementById(
-            "topicContent"
+            "grammarGrid"
         );
 
 
-    if (content) {
-
-        content.innerHTML = `
-
-            <div class="welcome-content">
-
-                <div class="welcome-icon">
-                    ⚠️
-                </div>
-
-                <h2>
-                    Fehler
-                </h2>
-
-                <p>
-                    ${escapeHTML(message)}
-                </p>
-
-            </div>
-
-        `;
-
+    if (!grid) {
+        return;
     }
 
-}
+
+    grid.innerHTML = `
+
+        <div class="loading-message">
+
+            <div class="loading-spinner"></div>
+
+            Grammatik wird geladen ...
+
+        </div>
+
+    `;
 
 
-// ------------------------------------------------------
-// INITIALIZE LEVEL PAGE
-// ------------------------------------------------------
+    try {
 
-document.addEventListener(
-    "DOMContentLoaded",
-    async () => {
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("grammar_topics")
+                .select("*")
+                .eq("level", level)
+                .eq("published", true)
+                .order(
+                    "sort_order",
+                    {
+                        ascending: true
+                    }
+                );
 
-        const level =
-            getLevelFromURL();
+
+        if (error) {
+            throw error;
+        }
 
 
-        const connected =
-            await connectSupabase();
+        if (!data || !data.length) {
 
+            grid.innerHTML = `
 
-        if (!connected) {
+                <div class="welcome-content">
+
+                    <div class="welcome-icon">
+                        📘
+                    </div>
+
+                    <h2>
+                        Noch keine Grammatik
+                    </h2>
+
+                    <p>
+                        Für ${level} wurden noch
+                        keine Grammatikthemen
+                        hinzugefügt.
+                    </p>
+
+                </div>
+
+            `;
 
             return;
 
         }
 
 
-        await loadLevel(
-            level
-        );
+        grid.innerHTML = `
+
+            <div class="grammar-grid">
+
+                ${data.map(item => {
+
+                    const points =
+                        parseArray(
+                            item.key_points
+                        );
+
+                    const patterns =
+                        parseArray(
+                            item.sentence_patterns
+                        );
+
+                    const examples =
+                        parseArray(
+                            item.examples
+                        );
+
+
+                    return `
+
+                        <article class="grammar-card">
+
+                            <span class="article-category">
+                                ${level}
+                            </span>
+
+
+                            <h2>
+                                ${escapeHTML(
+                                    item.title
+                                )}
+                            </h2>
+
+
+                            <p class="grammar-short">
+
+                                ${escapeHTML(
+                                    item.short_explanation || ""
+                                )}
+
+                            </p>
+
+
+                            <div class="grammar-rule">
+
+                                ${escapeHTML(
+                                    item.rule_preview || ""
+                                )}
+
+                            </div>
+
+
+                            ${
+                                item.explanation
+                                ?
+                                `
+                                <p>
+                                    ${escapeHTML(
+                                        item.explanation
+                                    )}
+                                </p>
+                                `
+                                :
+                                ""
+                            }
+
+
+                            ${
+                                points.length
+                                ?
+                                `
+                                <h3>
+                                    ⭐ Wichtig
+                                </h3>
+
+                                <ul class="content-list">
+
+                                    ${points.map(point => `
+                                        <li>
+                                            ${escapeHTML(
+                                                point
+                                            )}
+                                        </li>
+                                    `).join("")}
+
+                                </ul>
+                                `
+                                :
+                                ""
+                            }
+
+
+                            ${
+                                patterns.length
+                                ?
+                                `
+                                <h3>
+                                    🧩 Satzmuster
+                                </h3>
+
+                                ${patterns.map(pattern => `
+                                    <div class="pattern-box">
+                                        ${escapeHTML(
+                                            pattern
+                                        )}
+                                    </div>
+                                `).join("")}
+                                `
+                                :
+                                ""
+                            }
+
+
+                            ${
+                                examples.length
+                                ?
+                                `
+                                <h3>
+                                    💬 Beispiele
+                                </h3>
+
+                                ${examples.map(example => `
+                                    <div class="example-box">
+                                        ${escapeHTML(
+                                            example
+                                        )}
+                                    </div>
+                                `).join("")}
+                                `
+                                :
+                                ""
+                            }
+
+
+                            ${
+                                item.merke
+                                ?
+                                `
+                                <div class="merke-box">
+
+                                    <div>
+                                        💡
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Merke
+                                        </strong>
+
+                                        <p>
+                                            ${escapeHTML(
+                                                item.merke
+                                            )}
+                                        </p>
+
+                                    </div>
+
+                                </div>
+                                `
+                                :
+                                ""
+                            }
+
+                        </article>
+
+                    `;
+
+                }).join("")}
+
+            </div>
+
+        `;
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        grid.innerHTML = `
+
+            <div class="error-message">
+
+                Grammatik konnte nicht geladen werden.
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+// ======================================================
+// PAGE INITIALIZATION
+// ======================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
+
+        const connected =
+            await connectSupabase();
+
+
+        if (!connected) {
+            return;
+        }
+
+
+        // Learning page
+
+        if (
+            document.getElementById(
+                "topicNavigation"
+            )
+        ) {
+
+            await loadLearningPage();
+
+        }
+
+
+        // Vocabulary page
+
+        if (
+            document.getElementById(
+                "vocabularyGrid"
+            )
+        ) {
+
+            const buttons =
+                document.querySelectorAll(
+                    "[data-vocab-level]"
+                );
+
+
+            buttons.forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    async () => {
+
+                        buttons.forEach(
+                            b =>
+                                b.classList.remove(
+                                    "active"
+                                )
+                        );
+
+
+                        button.classList.add(
+                            "active"
+                        );
+
+
+                        await loadVocabulary(
+                            button.dataset.vocabLevel
+                        );
+
+                    }
+                );
+
+            });
+
+
+            await loadVocabulary("A1");
+
+        }
+
+
+        // Grammar page
+
+        if (
+            document.getElementById(
+                "grammarGrid"
+            )
+        ) {
+
+            const buttons =
+                document.querySelectorAll(
+                    "[data-grammar-level]"
+                );
+
+
+            buttons.forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    async () => {
+
+                        buttons.forEach(
+                            b =>
+                                b.classList.remove(
+                                    "active"
+                                )
+                        );
+
+
+                        button.classList.add(
+                            "active"
+                        );
+
+
+                        await loadGrammar(
+                            button.dataset.grammarLevel
+                        );
+
+                    }
+                );
+
+            });
+
+
+            await loadGrammar("A1");
+
+        }
 
     }
 );
