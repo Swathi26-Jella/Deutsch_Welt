@@ -1,28 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lernwelten – DeutschWelt</title>
-<link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Lernwelten – DeutschWelt
+    </title>
+
+    <meta
+        name="description"
+        content="DeutschWelt Lernwelten – A1, A2, B1 und B2."
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
+
 <body data-page="learn">
-<div id="site-header"></div>
-<main>
-<section class="page-hero shell">
-<span class="eyebrow">LERNWELTEN</span>
-<h1>Dein Weg von A1 bis B2.</h1>
-<p>Wähle oben dein Niveau. Danach werden die passenden Themen und Grammatik direkt aus Supabase angezeigt.</p>
-</section>
-<section class="level-tabs-wrap"><div class="shell">
-<div id="levelTabs" class="level-tabs" role="tablist">
-<button class="level-tab a1 active" data-level="A1">A1</button>
-<button class="level-tab a2" data-level="A2">A2</button>
-<button class="level-tab b1" data-level="B1">B1</button>
-<button class="level-tab b2" data-level="B2">B2</button>
-</div></div></section>
-<section class="section shell"><div id="selectedLevel"></div></section>
-</main>
-<div id="site-footer"></div>
-<script src="script.js"></script>
-</body></html>
+
+    <div id="site-header"></div>
+
+
+    <main>
+
+        <!-- INTRO -->
+        <section class="page-hero shell">
+
+            <span class="eyebrow">
+                LERNWELTEN
+            </span>
+
+            <h1>
+                Dein Weg von A1 bis B2.
+            </h1>
+
+            <p>
+                Wähle oben dein Niveau und entdecke
+                alle Themen und Grammatikbereiche,
+                die du auf diesem Niveau wiederholen kannst.
+            </p>
+
+        </section>
+
+
+        <!-- LEVEL TABS -->
+        <section class="level-tabs-section">
+
+            <div class="shell">
+
+                <div
+                    id="level-tabs"
+                    class="level-tabs"
+                    role="tablist"
+                    aria-label="Sprachniveau"
+                >
+
+                    <button
+                        class="level-tab a1 active"
+                        data-level-tab="A1"
+                        role="tab"
+                        aria-selected="true"
+                    >
+                        A1
+                    </button>
+
+
+                    <button
+                        class="level-tab a2"
+                        data-level-tab="A2"
+                        role="tab"
+                        aria-selected="false"
+                    >
+                        A2
+                    </button>
+
+
+                    <button
+                        class="level-tab b1"
+                        data-level-tab="B1"
+                        role="tab"
+                        aria-selected="false"
+                    >
+                        B1
+                    </button>
+
+
+                    <button
+                        class="level-tab b2"
+                        data-level-tab="B2"
+                        role="tab"
+                        aria-selected="false"
+                    >
+                        B2
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SELECTED LEVEL CONTENT -->
+        <section class="section shell">
+
+            <div
+                id="level-tab-content"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <div id="site-footer"></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
