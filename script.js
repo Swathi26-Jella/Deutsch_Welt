@@ -33,7 +33,7 @@ const SUPABASE_URL =
 
 
 const SUPABASE_ANON_KEY =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxseGN5YWJwdHNiZHRzZGhremtjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg5NjE3NTAsImV4cCI6MjEwNDUzNzc1MH0.cYvadDwigcXKlmbtN7s7jAVJCyXOO82uU3CC3Dz52vg";
+    "sb_publishable_MKh0z87kMiDAQX3jnaoADQ_-D0_XXd4";
 
 
 const SUPABASE_CDN =
