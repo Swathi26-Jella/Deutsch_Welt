@@ -1846,3 +1846,226 @@ button {
     }
 
 }
+/* =====================================================
+   AUDIO BUTTONS
+   ===================================================== */
+
+.audio-button {
+
+    border: 0;
+
+    background: #edf2ff;
+
+    color: var(--blue-dark);
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-left: 8px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    vertical-align: middle;
+
+    transition:
+        transform .15s,
+        background .15s;
+}
+
+
+.audio-button:hover {
+
+    transform:
+        scale(1.08);
+
+    background:
+        #dfe7ff;
+}
+
+
+.audio-button:active {
+
+    transform:
+        scale(.94);
+}
+
+
+/* topic title */
+
+.topic-title-area h2 {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        3px;
+}
+
+
+/* topic navigation audio */
+
+.topic-nav-audio {
+
+    margin-left:
+        auto;
+
+    opacity:
+        .55;
+
+    font-size:
+        14px;
+
+    cursor:
+        pointer;
+
+    padding:
+        4px;
+}
+
+
+.topic-button:hover
+.topic-nav-audio {
+
+    opacity:
+        1;
+}
+
+
+/* content rows */
+
+.content-list li {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        10px;
+}
+
+
+/* sentence pattern */
+
+.pattern-box,
+.example-box {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        10px;
+}
+
+
+/* vocabulary word */
+
+.vocabulary-word {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        3px;
+}
+
+
+/* vocabulary plural */
+
+.vocabulary-plural {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    flex-wrap:
+        wrap;
+}
+
+
+/* grammar headings */
+
+.grammar-card h2 {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        4px;
+}
+
+
+/* merke */
+
+.merke-box p {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    flex-wrap:
+        wrap;
+
+}
+
+
+/* mobile */
+
+@media (max-width: 600px) {
+
+    .audio-button {
+
+        width:
+            32px;
+
+        height:
+            32px;
+
+        font-size:
+            15px;
+    }
+
+}
