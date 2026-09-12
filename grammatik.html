@@ -4,75 +4,146 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>DeutschWelt – Grammatik</title>
 
-    <title>
-        Grammatik – DeutschWelt
-    </title>
-
-    <meta
-        name="description"
-        content="DeutschWelt Grammatik für A1 bis B2."
-    >
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 
-<body data-page="grammar">
-
-    <div id="site-header"></div>
+<body>
 
 
-    <main>
+<header class="site-header">
 
-        <section class="page-hero shell">
+    <div class="header-inner">
 
-            <span class="eyebrow">
-                GRAMMATIK
-            </span>
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🇩🇪</span>
+            <span>DeutschWelt</span>
+        </a>
 
-            <h1>
-                Grammatik, einfach erklärt.
-            </h1>
 
+        <nav class="main-nav">
+
+            <a href="index.html">
+                Startseite
+            </a>
+
+            <a href="lernen.html?level=A1">
+                Lernwelten
+            </a>
+
+            <a href="wortschatz.html">
+                Wortschatz
+            </a>
+
+            <a href="grammatik.html" class="active">
+                Grammatik
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="learning-page">
+
+
+    <section class="level-header">
+
+        <span class="eyebrow">
+            DeutschWelt
+        </span>
+
+        <h1>
+            Grammatik
+        </h1>
+
+        <p>
+            Deutsche Grammatik einfach und
+            verständlich erklärt.
+        </p>
+
+    </section>
+
+
+    <div class="level-filter">
+
+        <button
+            type="button"
+            class="filter-level active"
+            data-grammar-level="A1"
+        >
+            A1
+        </button>
+
+        <button
+            type="button"
+            class="filter-level"
+            data-grammar-level="A2"
+        >
+            A2
+        </button>
+
+        <button
+            type="button"
+            class="filter-level"
+            data-grammar-level="B1"
+        >
+            B1
+        </button>
+
+        <button
+            type="button"
+            class="filter-level"
+            data-grammar-level="B2"
+        >
+            B2
+        </button>
+
+    </div>
+
+
+    <section id="grammarGrid">
+
+        <div class="loading-message">
+            Grammatik wird geladen ...
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="footer-inner">
+
+        <div>
+            <strong>DeutschWelt</strong>
             <p>
-                Wähle dein Niveau und wiederhole
-                Grammatik mit klaren Regeln und Beispielen.
+                Deutsch verstehen. Deutsch anwenden.
             </p>
+        </div>
 
-        </section>
+        <div>
+            <p>
+                © 2026 DeutschWelt
+            </p>
+        </div>
 
+    </div>
 
-        <section class="section shell">
-
-            <div
-                id="grammar-filters"
-            ></div>
-
-
-            <div
-                id="grammar-grid"
-                class="grammar-grid"
-            ></div>
-
-        </section>
-
-    </main>
+</footer>
 
 
-    <div id="site-footer"></div>
-
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 
