@@ -4,75 +4,146 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>DeutschWelt – Wortschatz</title>
 
-    <title>
-        Wortschatz – DeutschWelt
-    </title>
-
-    <meta
-        name="description"
-        content="DeutschWelt Wortschatz für A1 bis B2."
-    >
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 
-<body data-page="vocabulary">
-
-    <div id="site-header"></div>
+<body>
 
 
-    <main>
+<header class="site-header">
 
-        <section class="page-hero shell">
+    <div class="header-inner">
 
-            <span class="eyebrow">
-                WORTSCHATZ
-            </span>
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🇩🇪</span>
+            <span>DeutschWelt</span>
+        </a>
 
-            <h1>
-                Wörter, die du wirklich brauchst.
-            </h1>
 
+        <nav class="main-nav">
+
+            <a href="index.html">
+                Startseite
+            </a>
+
+            <a href="lernen.html?level=A1">
+                Lernwelten
+            </a>
+
+            <a href="wortschatz.html" class="active">
+                Wortschatz
+            </a>
+
+            <a href="grammatik.html">
+                Grammatik
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="learning-page">
+
+
+    <section class="level-header">
+
+        <span class="eyebrow">
+            DeutschWelt
+        </span>
+
+        <h1>
+            Wortschatz
+        </h1>
+
+        <p>
+            Wichtige deutsche Wörter nach Niveau
+            und Thema.
+        </p>
+
+    </section>
+
+
+    <div class="level-filter">
+
+        <button
+            type="button"
+            class="filter-level active"
+            data-vocab-level="A1"
+        >
+            A1
+        </button>
+
+        <button
+            type="button"
+            class="filter-level"
+            data-vocab-level="A2"
+        >
+            A2
+        </button>
+
+        <button
+            type="button"
+            class="filter-level"
+            data-vocab-level="B1"
+        >
+            B1
+        </button>
+
+        <button
+            type="button"
+            class="filter-level"
+            data-vocab-level="B2"
+        >
+            B2
+        </button>
+
+    </div>
+
+
+    <section id="vocabularyGrid">
+
+        <div class="loading-message">
+            Wortschatz wird geladen ...
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="footer-inner">
+
+        <div>
+            <strong>DeutschWelt</strong>
             <p>
-                Durchsuche deutsche Wörter nach Niveau
-                und Thema.
+                Deutsch verstehen. Deutsch anwenden.
             </p>
+        </div>
 
-        </section>
+        <div>
+            <p>
+                © 2026 DeutschWelt
+            </p>
+        </div>
 
+    </div>
 
-        <section class="section shell">
-
-            <div
-                id="vocab-filters"
-            ></div>
-
-
-            <div
-                id="vocab-grid"
-                class="vocab-grid"
-            ></div>
-
-        </section>
-
-    </main>
+</footer>
 
 
-    <div id="site-footer"></div>
-
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 
